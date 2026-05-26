@@ -32,9 +32,6 @@ jobs:
 
       - name: Upload Pages artifact
         uses: ./.github/actions/upload-pages-artifact
-        with:
-          path: .
-          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment
