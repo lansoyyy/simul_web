@@ -1,7 +1,13 @@
 name: Deploy GitHub Pages
 
 # Deploy pre-built Flutter web static files (no Jekyll).
-# Requires repo Settings → Pages → Source: "GitHub Actions" (not "Deploy from a branch").
+#
+# ONE-TIME SETUP (required — site will 404 until this is done):
+#   https://github.com/lansoyyy/simul_web/settings/pages
+#   → Build and deployment → Source → "GitHub Actions"
+#
+# Simpler alternative: choose "Deploy from a branch" → master / (root)
+# and delete this workflow file. .nojekyll skips Jekyll.
 
 on:
   push:
@@ -27,16 +33,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Verify Flutter web build output
         run: |
           test -f .nojekyll || touch .nojekyll
-          test -f index.html || (echo "Missing index.html — push a Flutter web build first." && exit 1)
-          test -f main.dart.js || (echo "Missing main.dart.js — push a Flutter web build first." && exit 1)
+          test -f index.html || (echo "Missing index.html — run deploy_web.sh first." && exit 1)
+          test -f main.dart.js || (echo "Missing main.dart.js — run deploy_web.sh first." && exit 1)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment
