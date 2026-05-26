@@ -1,28 +1,44 @@
 name: Deploy GitHub Pages
 
-# Fallback workflow using only actions/checkout (other actions/* downloads fail on this repo).
-# Primary deploy path: deploy_web.sh pushes the gh-pages branch directly.
-
 on:
+  push:
+    branches: [master]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Publish site to gh-pages branch
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Verify Flutter web build output
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan gh-pages-deploy
-          git add -A
-          git commit -m "Deploy ${GITHUB_SHA::7}"
-          git push -f origin HEAD:gh-pages
+          test -f .nojekyll || touch .nojekyll
+          test -f index.html || (echo "Missing index.html" && exit 1)
+          test -f main.dart.js || (echo "Missing main.dart.js" && exit 1)
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+          include-hidden-files: true
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
