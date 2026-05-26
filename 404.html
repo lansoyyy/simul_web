@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    (function () {
+      // GitHub Pages project sites (e.g. user.github.io/simul_web/) need 1.
+      // Custom domains at the repo root (e.g. app.simul-group.ch) need 0.
+      var pathSegmentsToKeep = 0;
+
+      var location = window.location;
+      var fullPath =
+        location.pathname + location.search + location.hash;
+      var base =
+        location.protocol +
+        '//' +
+        location.hostname +
+        (location.port ? ':' + location.port : '') +
+        location.pathname
+          .split('/')
+          .slice(0, 1 + pathSegmentsToKeep)
+          .join('/') +
+        '/';
+      var target =
+        base + '?__gh_pages_route=' + encodeURIComponent(fullPath);
+      location.replace(target);
+    })();
+  </script>
+</head>
+
+<body>
+  Redirecting...
+</body>
+
+</html>
