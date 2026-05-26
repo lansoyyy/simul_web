@@ -24,9 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Verify Flutter web build output
         run: |
           test -f .nojekyll || touch .nojekyll
@@ -41,4 +38,16 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ARTIFACT_ID="$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" \
+            --jq '.artifacts[] | select(.name=="github-pages") | .id')"
+          if [[ -z "$ARTIFACT_ID" ]]; then
+            echo "github-pages artifact not found"
+            exit 1
+          fi
+          gh api --method POST "repos/${{ github.repository }}/pages/deployments" \
+            -f artifact_id="$ARTIFACT_ID" \
+            --jq '.page.url' | tee page_url.txt
+          echo "page_url=$(cat page_url.txt)" >> "$GITHUB_OUTPUT"
