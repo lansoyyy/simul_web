@@ -1,53 +1,28 @@
 name: Deploy GitHub Pages
 
-# Deploy pre-built Flutter web static files (no Jekyll).
-#
-# ONE-TIME SETUP (required — site will 404 until this is done):
-#   https://github.com/lansoyyy/simul_web/settings/pages
-#   → Build and deployment → Source → "GitHub Actions"
-#
-# Simpler alternative: choose "Deploy from a branch" → master / (root)
-# and delete this workflow file. .nojekyll skips Jekyll.
+# Fallback workflow using only actions/checkout (other actions/* downloads fail on this repo).
+# Primary deploy path: deploy_web.sh pushes the gh-pages branch directly.
 
 on:
-  push:
-    branches: [master]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Verify Flutter web build output
-        run: |
-          test -f .nojekyll || touch .nojekyll
-          test -f index.html || (echo "Missing index.html — run deploy_web.sh first." && exit 1)
-          test -f main.dart.js || (echo "Missing main.dart.js — run deploy_web.sh first." && exit 1)
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-          include-hidden-files: true
+          fetch-depth: 0
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish site to gh-pages branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan gh-pages-deploy
+          git add -A
+          git commit -m "Deploy ${GITHUB_SHA::7}"
+          git push -f origin HEAD:gh-pages
