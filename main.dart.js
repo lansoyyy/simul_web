@@ -308553,7 +308553,7 @@ a4=a4.w
 d="Invoice "+a5+" \u2014 "+a7+" \u2014 "+a4
 c=b2!=null&&b2.length!==0?b2:"Please find the invoice for the period "+a4+" available at the link below:"
 b="<p>"+A.bI(c,"\n","<br>")+'</p>\n<p>View or download invoice here:<br><a href="'+A.z(h)+'">'+A.z(h)+"</a></p>\n"
-a="https://cors-clear.deno.dev/https://api.resend.com/emails"
+a="https://cors-anywhere.azm.workers.dev/https://api.resend.com/emails"
 a4=A.fN(a,0,null)
 a5=t.N
 a7=A.S(["Authorization","Bearer re_Q6CR3tcL_EmeCp8wi9GGBKhLy5ECdQRJ3","Content-Type","application/json"],a5,a5)
