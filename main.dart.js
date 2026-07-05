@@ -308559,7 +308559,7 @@ a5=A.fN(a0,0,null)
 a6=t.N
 a8=A.S(["Authorization","Bearer re_Q6CR3tcL_EmeCp8wi9GGBKhLy5ECdQRJ3","Content-Type","application/json"],a6,a6)
 s=24
-return A.c(A.e5U(a5,B.fz.aPA(A.S(["from","Simul <onboarding@resend.dev>","to",A.a([b0],t.s),"subject",d,"html",b,"attachments",A.a([A.S(["filename","Invoice_"+m.a.r+".pdf","content",B.pe.gxq().bO(l)],a6,a6)],t.SN)],a6,a4),null),a8),$async$oA)
+return A.c(A.e5U(a5,B.fz.aPA(A.S(["from","Simul <invoices@simul-group.ch>","to",A.a([b0],t.s),"subject",d,"html",b,"attachments",A.a([A.S(["filename","Invoice_"+m.a.r+".pdf","content",B.pe.gxq().bO(l)],a6,a6)],t.SN)],a6,a4),null),a8),$async$oA)
 case 24:a1=b5
 if(a1.b<200||a1.b>=300){a4=A.av("Resend API error: "+J.eEs(a1))
 throw A.r(a4)}a4=m.c
