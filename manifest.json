@@ -1,11 +1,11 @@
 {
-    "name": "CaraGo",
-    "short_name": "CaraGo",
+    "name": "simul",
+    "short_name": "simul",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#F7F4EE",
-    "theme_color": "#C6A15B",
-    "description": "CaraGo",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Simul",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
