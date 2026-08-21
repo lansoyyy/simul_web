@@ -34,10 +34,10 @@ jobs:
           test -f main.dart.js || (echo "Missing main.dart.js" && exit 1)
 
       - name: Upload Pages artifact
-        uses: ./.github/actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: ./.github/actions/deploy-pages
+        uses: actions/deploy-pages@v4
