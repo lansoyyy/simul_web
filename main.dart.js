@@ -86455,7 +86455,7 @@ if(B.b.p(s,"intercity"))return u.aj
 if(B.b.p(s,"dorint"))return r
 if(B.b.p(s,"b&b")||B.b.p(s,"b & b")||B.b.p(s,"bnb"))return u.cT
 if(B.b.p(s,"jet"))return"https://simultaxi.ch/hotelportal/Jet"
-if(B.b.p(s,"zleep"))return"https://simultaxi.ch/hotelportal/Zleep"
+if(B.b.p(s,"zleep"))return"https://simultaxi.ch/hotelportal/zleep"
 return r},
 Os(a,b){var s=0,r=A.l(t.y),q
 var $async$Os=A.h(function(c,d){if(c===1)return A.i(d,r)
@@ -369405,7 +369405,7 @@ B.czq=new A.f([B.a_J,184,B.a_K,185,B.a_L,186,B.a_M,187,B.a_N,189,B.a_O,190],A.aF
 B.cI3={attributename:0,attributetype:1,basefrequency:2,baseprofile:3,calcmode:4,clippathunits:5,contentscripttype:6,contentstyletype:7,diffuseconstant:8,edgemode:9,externalresourcesrequired:10,filterres:11,filterunits:12,glyphref:13,gradienttransform:14,gradientunits:15,kernelmatrix:16,kernelunitlength:17,keypoints:18,keysplines:19,keytimes:20,lengthadjust:21,limitingconeangle:22,markerheight:23,markerunits:24,markerwidth:25,maskcontentunits:26,maskunits:27,numoctaves:28,pathlength:29,patterncontentunits:30,patterntransform:31,patternunits:32,pointsatx:33,pointsaty:34,pointsatz:35,preservealpha:36,preserveaspectratio:37,primitiveunits:38,refx:39,refy:40,repeatcount:41,repeatdur:42,requiredextensions:43,requiredfeatures:44,specularconstant:45,specularexponent:46,spreadmethod:47,startoffset:48,stddeviation:49,stitchtiles:50,surfacescale:51,systemlanguage:52,tablevalues:53,targetx:54,targety:55,textlength:56,viewbox:57,viewtarget:58,xchannelselector:59,ychannelselector:60,zoomandpan:61}
 B.czu=new A.bh(B.cI3,["attributeName","attributeType","baseFrequency","baseProfile","calcMode","clipPathUnits","contentScriptType","contentStyleType","diffuseConstant","edgeMode","externalResourcesRequired","filterRes","filterUnits","glyphRef","gradientTransform","gradientUnits","kernelMatrix","kernelUnitLength","keyPoints","keySplines","keyTimes","lengthAdjust","limitingConeAngle","markerHeight","markerUnits","markerWidth","maskContentUnits","maskUnits","numOctaves","pathLength","patternContentUnits","patternTransform","patternUnits","pointsAtX","pointsAtY","pointsAtZ","preserveAlpha","preserveAspectRatio","primitiveUnits","refX","refY","repeatCount","repeatDur","requiredExtensions","requiredFeatures","specularConstant","specularExponent","spreadMethod","startOffset","stdDeviation","stitchTiles","surfaceScale","systemLanguage","tableValues","targetX","targetY","textLength","viewBox","viewTarget","xChannelSelector","yChannelSelector","zoomAndPan"],t.w)
 B.cIf={"Radisson-R\xfcmlang":0,Intercity:1,Dorint:2,"B&B-R\xfcmlang":3,Jet:4,Zleep:5}
-B.aog=new A.bh(B.cIf,[u.fW,u.aj,"https://simultaxi.ch/hotelportal/dorint",u.cT,"https://simultaxi.ch/hotelportal/Jet","https://simultaxi.ch/hotelportal/Zleep"],t.w)
+B.aog=new A.bh(B.cIf,[u.fW,u.aj,"https://simultaxi.ch/hotelportal/dorint",u.cT,"https://simultaxi.ch/hotelportal/Jet","https://simultaxi.ch/hotelportal/zleep"],t.w)
 B.aqq=new A.Q2(0,"automatic")
 B.cO5=new A.Q2(1,"automaticAsync")
 B.cO6=new A.Q2(2,"manual")
